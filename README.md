@@ -1,0 +1,1 @@
+# hbase-hive-solr-Intergrated
