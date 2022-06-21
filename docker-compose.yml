@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  solr:
+    image: solr:7.4
+    ports:
+     - "8983:8983"
+       #- "8984:8984" Uncomment these to run in HDFS mode
+       #command: bash -c "solr start -p 8984 -Dsolr.directoryFactory=HdfsDirectoryFactory -Dsolr.lock.type=hdfs -Dsolr.data.dir=hdfs -Dsolr.data.dir=hdfs://172.17.0.2:9000/solr -Dsolr.updatelog=hdfs://172.17.0.2:9000/solr && solr create_core -p 8984 -c solr_analysis && solr-precreate solr_analysis"
+    command: bash -c "solr-precreate solr_analysis"
+    network_mode: "bridge"
