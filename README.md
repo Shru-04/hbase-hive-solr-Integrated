@@ -30,24 +30,25 @@ Or
 sudo docker compose up -d
 ```
 
+###
+
+Before running the following commands download the data.csv file from [here](https://drive.google.com/drive/folders/110-fO9rZc-y2sf8aeoX0IC9fWGx7FQ89?usp=sharing)
+
 ### Running Hbase and Hive Integrations :
 
 In another terminal instance,
 
 - Build the image from the repository,
-  
   ```bash
   sudo docker build -t <image-name> .
   ```
   
 - Create and Run the container instance,
-  
   ```bash
   sudo docker run -it --name <container-name> --hostname bigdata -p 50070:50070 -p 8088:8088 -p 10020:10020 -p 9042:9042 -p 10000:10000 -p 10001:10001 -p 10002:10002 <image-name>
   ```
   
 - When the Hive Shell pops up, enter the following Hive Queries,
-  
   ```sql
   CREATE TABLE data (id STRING, step BIGINT, type STRING, amount FLOAT, nameOrig STRING, oldbalanceOrg FLOAT, newbalanceOrig FLOAT, nameDest STRING, oldbalanceDest FLOAT, newbalanceDest FLOAT,isFruad  TINYINT, isFlaggedFruad TINYINT)
   STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
